@@ -62,7 +62,7 @@ search.addEventListener('click', () => {
 
                 case 'Mist':
                     image.src = 'images/Mist.jpg';
-                    break; ription
+                    break; 
 
                 case 'Smoke':
                     image.src = 'images/Smoke.jpg';
