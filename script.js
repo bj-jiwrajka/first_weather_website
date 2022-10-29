@@ -3,7 +3,7 @@ const search = document.querySelector('.search-box button');
 const weatherBox = document.querySelector('.weather-box');
 const weatherDetails = document.querySelector('.weather-details');
 const error404 = document.querySelector('.not-found');
-
+const input = document.querySelector('#pass');
 search.addEventListener('click', () => {
 
     const APIKey = '6bdcc2a7794509ba530ddd5e9b6f1457';
@@ -11,6 +11,7 @@ search.addEventListener('click', () => {
 
     if (city === '')
         return;
+
 
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${APIKey}`)
         .then(response => response.json())
@@ -39,7 +40,7 @@ search.addEventListener('click', () => {
             const humidity = document.querySelector('.weather-details .humidity span');
             const wind = document.querySelector('.weather-details .wind span');
 
-                    switch (json.weather[0].main) {
+            switch (json.weather[0].main) {
                 case 'Clear':
                     image.src = 'images/Clear.jpg';
                     break;
@@ -62,7 +63,7 @@ search.addEventListener('click', () => {
 
                 case 'Mist':
                     image.src = 'images/Mist.jpg';
-                    break; 
+                    break;
 
                 case 'Smoke':
                     image.src = 'images/Smoke.jpg';
@@ -71,7 +72,6 @@ search.addEventListener('click', () => {
                 default:
                     image.src = '';
             }
-
 
             temp.innerHTML = `${parseInt(json.main.temp)}<span>°C</span>`;
             description.innerHTML = `${json.weather[0].description}`;
@@ -88,6 +88,13 @@ search.addEventListener('click', () => {
         });
 
 });
+function addcity(input) {
+    const empty = input.value;
+    if (empty === '') {
+        alert("Please enter a location !!");
+        return;
+    }
+}
 const audio = new Audio("click-21156.mp3");
 function myfun(audio) {
     audio.play();
